@@ -18,6 +18,8 @@ extension Font {
     static func customfont(_ font: Metropolis, fontSize: CGFloat) -> Font {
         custom(font.rawValue, size: fontSize)
     }
+    
+    
 }
 
 extension CGFloat {
@@ -66,6 +68,7 @@ extension CGFloat {
         }
         return 0.0
     }
+    
 }
 
 extension Color {
@@ -130,6 +133,96 @@ extension View {
     func cornerRadius(_ radius: CGFloat, corner: UIRectCorner ) -> some View {
         clipShape(RoundedCorner(radius: radius, corner: corner))
     }
+    
+    var maxLeft: some View {
+        self.frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    var maxRight: some View {
+        self.frame(maxWidth: .infinity, alignment: .trailing)
+    }
+    
+    var maxConter: some View {
+        self.frame(maxWidth: .infinity, alignment: .center)
+    }
+    
+    var t8: some View {
+        self.padding(.top,8)
+    }
+    
+    var t15: some View {
+        self.padding(.top,15)
+    }
+    
+    var v8: some View {
+        self.padding(.vertical,8)
+    }
+    
+    var v15: some View {
+        self.padding(.vertical,15)
+    }
+    
+    var v: some View {
+        self.padding(.vertical)
+    }
+    
+    var h8: some View {
+        self.padding(.horizontal,8)
+    }
+    
+    var h15: some View {
+        self.padding(.horizontal,15)
+    }
+    
+    var h20: some View {
+        self.padding(.horizontal,20)
+    }
+    
+    var h: some View {
+        self.padding(.horizontal)
+    }
+    
+    var b8: some View {
+        self.padding(.bottom,8)
+    }
+    
+    var b15: some View {
+        self.padding(.bottom,15)
+    }
+    
+    var r11: some View {
+        
+        self.font(.customfont(.regular, fontSize: 11))
+        
+    }
+    
+    var r14: some View {
+        self.font(.customfont(.regular, fontSize: 14))
+    }
+    
+    var r16: some View {
+        self.font(.customfont(.regular, fontSize: 16))
+    }
+    
+    var m14: some View {
+        self.font(.customfont(.medium, fontSize: 14))
+    }
+     var s16: some View {
+         self.font(.customfont(.semibold, fontSize: 16))
+    }
+    
+     var s18: some View {
+         self.font(.customfont(.semibold, fontSize: 18))
+    }
+    
+     var s24: some View {
+         self.font(.customfont(.semibold, fontSize: 24))
+    }
+    
+     var b34: some View {
+         self.font(.customfont(.bold, fontSize: 34))
+    }
+    
 }
 
 struct RoundedCorner: Shape {
@@ -142,5 +235,16 @@ struct RoundedCorner: Shape {
             byRoundingCorners: corner,
             cornerRadii: CGSize(width: radius, height: radius)
        ).cgPath)
+    }
+}
+
+extension Binding {
+    static func ?? (lhs: Binding< Optional<Value>>, rhs:Value ) -> Binding<Value> {
+        Binding {
+            lhs.wrappedValue ?? rhs
+        } set: {
+            
+            lhs.wrappedValue = $0
+        }
     }
 }
