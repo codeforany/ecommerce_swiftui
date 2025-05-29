@@ -13,6 +13,7 @@ struct RoundTextField: View {
     @State var placeholder: String = ""
     @Binding var errorMessage: String
     @Binding var isError: Bool
+    @State var isPassword: Bool = false
     
     
     var body: some View {
@@ -28,8 +29,15 @@ struct RoundTextField: View {
                 }
                 
                 HStack {
-                    TextField(placeholder, text: $txt)
-                        .maxLeft
+                    
+                    if isPassword {
+                        SecureField(placeholder, text: $txt)
+                            .maxLeft
+                    }
+                    else{
+                        TextField(placeholder, text: $txt)
+                            .maxLeft
+                    }
                     
                     if(isError) {
                         Image(systemName: "xmark" )
@@ -43,6 +51,7 @@ struct RoundTextField: View {
                     
             }
             .padding()
+            .frame(minHeight: 64 )
             .background(  Color.white )
             .shadow(radius:  isError ? 0 : 2)
             .overlay( Rectangle().stroke(lineWidth: 1.2).foregroundStyle(isError ?  Color.primaryApp : Color.clear ) )

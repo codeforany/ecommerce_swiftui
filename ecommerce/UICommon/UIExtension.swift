@@ -98,7 +98,7 @@ extension Color {
     }
     
     static var bg: Color {
-        return Color(hex: "DB3022")
+        return Color(hex: "F9F9F9")
     }
     
     
@@ -221,6 +221,26 @@ extension View {
     
      var b34: some View {
          self.font(.customfont(.bold, fontSize: 34))
+    }
+    
+    
+    var navHide: some View {
+        return navigationTitle("")
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden()
+        .ignoresSafeArea()
+    }
+    
+    var navHideWithout: some View {
+        return navigationTitle("")
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden()
+        
+    }
+    
+    func bgNavLink( content: some View, isActive: Binding<Bool> ) -> some View {
+        
+        return self.background( NavigationLink(destination: content, isActive: isActive, label: { EmptyView()}) )
     }
     
 }
