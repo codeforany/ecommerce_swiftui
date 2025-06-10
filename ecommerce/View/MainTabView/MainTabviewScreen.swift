@@ -15,7 +15,7 @@ struct MainTabviewScreen: View {
         ZStack {
             
             if( selectTab == 0 ) {
-                HomeTab1Screen()
+                HomeTab2Screen()
             }else if( selectTab == 1 ) {
                 VStack {
                     Text("Shop")
