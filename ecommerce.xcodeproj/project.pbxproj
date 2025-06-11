@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CB241C062DF95137006039CD /* ExyteGrid in Frameworks */ = {isa = PBXBuildFile; productRef = CB241C052DF95137006039CD /* ExyteGrid */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CBFB30E42DDEDC65004ABF12 /* ecommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ecommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB241C062DF95137006039CD /* ExyteGrid in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = ecommerce;
 			packageProductDependencies = (
+				CB241C052DF95137006039CD /* ExyteGrid */,
 			);
 			productName = ecommerce;
 			productReference = CBFB30E42DDEDC65004ABF12 /* ecommerce.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = CBFB30DB2DDEDC65004ABF12;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CB241C042DF95137006039CD /* XCRemoteSwiftPackageReference "Grid" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CBFB30E52DDEDC65004ABF12 /* Products */;
 			projectDirPath = "";
@@ -335,6 +344,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CB241C042DF95137006039CD /* XCRemoteSwiftPackageReference "Grid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/Grid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CB241C052DF95137006039CD /* ExyteGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB241C042DF95137006039CD /* XCRemoteSwiftPackageReference "Grid" */;
+			productName = ExyteGrid;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CBFB30DC2DDEDC65004ABF12 /* Project object */;
 }
