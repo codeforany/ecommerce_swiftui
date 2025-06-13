@@ -17,9 +17,7 @@ struct MainTabviewScreen: View {
             if( selectTab == 0 ) {
                 HomeTab3Screem()
             }else if( selectTab == 1 ) {
-                VStack {
-                    Text("Shop")
-                }
+                ShopTabScreen()
             }else if( selectTab == 2 ) {
                 VStack {
                     Text("Bag")
@@ -74,6 +72,7 @@ struct MainTabviewScreen: View {
             
         }
         .navHide
+        
     }
 }
 
