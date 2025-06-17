@@ -77,5 +77,7 @@ struct MainTabviewScreen: View {
 }
 
 #Preview {
-    MainTabviewScreen()
+    NavigationView {
+        MainTabviewScreen()
+    }
 }

@@ -53,6 +53,11 @@ struct WomenCategoriesTabScreen: View {
                     var obj = self.listArr[index]
                     var isOffer = obj["is_offer"] as? Bool ?? false
                     
+                    
+                    NavigationLink {
+                        SubCateScreen()
+                    } label: {
+                        
                     if(isOffer) {
                         
                         VStack(alignment: .center) {
@@ -80,7 +85,9 @@ struct WomenCategoriesTabScreen: View {
                                 Text( obj["name"] as? String ?? "" )
                                     .s18
                                     .h20
+                                    .foregroundStyle(Color.primaryText)
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    
                                 
                                 
                                 Image( obj["image"] as? String ?? "" )
@@ -100,6 +107,7 @@ struct WomenCategoriesTabScreen: View {
                         .background( Color.white )
                         .cornerRadius(10)
                         .shadow( color: .black.opacity(0.15) ,radius: 5)
+                    }
                     }
                 }
                 
