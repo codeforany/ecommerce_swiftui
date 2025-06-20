@@ -91,14 +91,11 @@ struct SubCateScreen: View {
                             
                             let obj = self.listArr[i]
                             
-                            Button {
-                                isShow = true
-                                print("Hello")
-                               
-                            } label: {
+                            
                                 VStack{
                                     Button {
-                                        
+                                        isShow = true
+                                        print("Hello")
                                     } label: {
                                         Text(obj["name"] ?? "" )
                                             .r16
@@ -112,13 +109,7 @@ struct SubCateScreen: View {
                                         .fill( Color.black.opacity(0.1) )
                                         .frame( height: 1)
                                 }
-                            }
-
-                            
-                            
-                            
-                            
-
+                           
                         }
                     }
                     

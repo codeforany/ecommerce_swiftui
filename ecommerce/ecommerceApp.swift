@@ -13,7 +13,7 @@ struct ecommerceApp: App {
         WindowGroup {
             
             NavigationView {
-                CatProductListScreen()
+                MainTabviewScreen()
             }
         }
     }
