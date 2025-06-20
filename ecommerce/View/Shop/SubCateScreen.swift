@@ -10,7 +10,7 @@ import SwiftUI
 struct SubCateScreen: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
+    @State var isShow = false
     var listArr = [
         ["name": "Tops"],
             ["name": "Shirts & Blouses"],
@@ -89,25 +89,33 @@ struct SubCateScreen: View {
                     LazyVStack {
                         ForEach(0..<listArr.count, id:\.self) { i in
                             
-                            var obj = self.listArr[i]
+                            let obj = self.listArr[i]
                             
-                            
-                            VStack{
-                                Button {
+                            Button {
+                                isShow = true
+                                print("Hello")
+                               
+                            } label: {
+                                VStack{
+                                    Button {
+                                        
+                                    } label: {
+                                        Text(obj["name"] ?? "" )
+                                            .r16
+                                            .foregroundStyle(Color.primaryText)
+                                            .maxLeft
+                                    }
+                                    .frame( height: 50)
+                                    .padding(.horizontal, 35)
                                     
-                                } label: {
-                                    Text(obj["name"] ?? "" )
-                                        .r16
-                                        .foregroundStyle(Color.primaryText)
-                                        .maxLeft
+                                    RoundedCorner()
+                                        .fill( Color.black.opacity(0.1) )
+                                        .frame( height: 1)
                                 }
-                                .frame( height: 50)
-                                .padding(.horizontal, 35)
-                                
-                                RoundedCorner()
-                                    .fill( Color.black.opacity(0.1) )
-                                    .frame( height: 1)
                             }
+
+                            
+                            
                             
                             
 
@@ -120,6 +128,7 @@ struct SubCateScreen: View {
             }
             
         }
+        .bgNavLink(content:  CatProductListScreen(), isActive: $isShow )
         .navHide
         .background( Color.bg )
         
@@ -127,5 +136,10 @@ struct SubCateScreen: View {
 }
 
 #Preview {
-    SubCateScreen()
+    
+    NavigationView {
+        SubCateScreen()
+    }
+    
+    
 }
