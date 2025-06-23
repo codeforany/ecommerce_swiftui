@@ -24,10 +24,22 @@ struct CatProductListScreen: View {
     ["name": "Sleeveless"],
     ["name": "Shirts"]]
     
+    @State var isGrid = true
+    @State var isShowSort = false
+    
+    @State var column = [
+            
+        GridItem(.flexible(minimum: 150), spacing: 15),
+        GridItem(.flexible(minimum: 150), spacing: 15)
+        
+    ]
+    
+    @State var selectSort: Int = 3
+    
     var body: some View {
         ZStack {
             
-            VStack {
+            VStack(spacing:0) {
                 
                 VStack(alignment: .leading){
                     
@@ -103,9 +115,9 @@ struct CatProductListScreen: View {
                     HStack {
                             
                         Button {
-                            
+                           
                         } label: {
-                            Image(systemName: "line.3.horizontal.decrease")
+                            Image(systemName:  "line.3.horizontal.decrease")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 25, height: 25, alignment: .center)
@@ -117,7 +129,7 @@ struct CatProductListScreen: View {
                         
                         
                         Button {
-                            
+                            isShowSort = true
                         } label: {
                             Image(systemName: "arrow.up.arrow.down")
                                 .resizable()
@@ -131,9 +143,9 @@ struct CatProductListScreen: View {
                         .maxConter
                         
                         Button {
-                            
+                            isGrid = !isGrid
                         } label: {
-                            Image(systemName: "square.grid.3x2.fill")
+                            Image(systemName: isGrid  ? "list.bullet" : "square.grid.3x2.fill")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 25, height: 25, alignment: .center)
@@ -144,79 +156,94 @@ struct CatProductListScreen: View {
                     .v8
                     
                 }
-                
                 .foregroundStyle( Color.primaryText )
-                .background( Color.white )
-                .shadow(color: .black.opacity(0.2) ,radius: 1, y: 1)
                 .padding(.top, .topInsets)
+                .background( Rectangle().fill(Color.white).shadow(color: .black.opacity(0.2) ,radius: 1, y: 1) )
+                
+                
                 
                 
                 ScrollView {
                     
-                    
-                    LazyVStack (spacing: 15) {
-                        ForEach(0..<10, id:\.self) { i in
-                            
-                            
-                            
-                            
-                            HStack {
+                    if isGrid {
+                        LazyVGrid(columns: column, spacing: 20) {
+                            ForEach(0..<10, id:\.self) { i in
+                                ItemCell(isOffer: false)
+                                    .clipped()
                                 
-                                Image("sc1")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 104, height: 104)
-                                    
-                                .clipped()
-                                
-                                VStack(alignment: .leading) {
-                                    
-                                    
-                                    Text("Pullover")
-                                        .s16
-                                        .foregroundStyle(Color.primaryText)
-                                        .padding(.top, 1)
-                                   
-                                    
-                                    Text("Mango")
-                                        .r11
-                                        .foregroundStyle(Color.placeholder)
-                                        .padding(.top, 1)
-                                    
-                                    HStack(spacing: 4) {
-                                        ForEach(0..<5) { index in
-                                            Image(systemName: "star.fill")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .font(.system(size: 14))
-                                                .frame(width: 15, height: 15)
-                                                .foregroundStyle(.yellow)
-                                        }
-                                        Text("(10)")
-                                            .r14
-                                            .foregroundStyle(Color.placeholder)
-                                        
-                                    }
-                                    
-                                    HStack {
-                                        Text("$12")
-                                            .m14
-                                            .foregroundStyle(Color.primaryApp)
-                                        
-                                    }
-                                    .padding(.top, 1)
-                                }
-                                .maxLeft
                             }
-                            .background( Color.white )
-                            .cornerRadius(10)
-                            .shadow( color: Color.black.opacity(0.2) , radius: 2, y:1)
-                            .h15
-                            
-                            
-
                         }
+                        .padding(20)
+                    }else{
+                        LazyVStack (spacing: 15) {
+                            
+                            
+                            ForEach(0..<10, id:\.self) { i in
+                                
+                                
+                                
+                                
+                                HStack {
+                                    
+                                    Image("sc1")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 104, height: 104)
+                                        
+                                    .clipped()
+                                    
+                                    VStack(alignment: .leading) {
+                                        
+                                        
+                                        Text("Pullover")
+                                            .s16
+                                            .foregroundStyle(Color.primaryText)
+                                            .padding(.top, 1)
+                                       
+                                        
+                                        Text("Mango")
+                                            .r11
+                                            .foregroundStyle(Color.placeholder)
+                                            .padding(.top, 1)
+                                        
+                                        HStack(spacing: 4) {
+                                            ForEach(0..<5) { index in
+                                                Image(systemName: "star.fill")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .font(.system(size: 14))
+                                                    .frame(width: 15, height: 15)
+                                                    .foregroundStyle(.yellow)
+                                            }
+                                            Text("(10)")
+                                                .r14
+                                                .foregroundStyle(Color.placeholder)
+                                            
+                                        }
+                                        
+                                        HStack {
+                                            Text("$12")
+                                                .m14
+                                                .foregroundStyle(Color.primaryApp)
+                                            
+                                        }
+                                        .padding(.top, 1)
+                                    }
+                                    .maxLeft
+                                }
+                                .background( Color.white )
+                                .cornerRadius(10)
+                                .shadow( color: Color.black.opacity(0.1) , radius: 2, y:1)
+                                .h15
+                                
+                                
+
+                            }
+                        }
+                        .t15
                     }
+                    
+                    
                     
                     
                     
@@ -224,6 +251,47 @@ struct CatProductListScreen: View {
             }
             
         }
+        .sheet(isPresented: $isShowSort, content: {
+            
+            LazyVStack(spacing: 0) {
+                
+                Text("Sort By")
+                    .b34
+                    .foregroundStyle(Color.primaryText)
+                    .maxConter
+                    .b15
+                
+                SheetRow(isSelected: selectSort == 0 , title: "Popular") {
+                    selectSort = 0
+                }
+                
+                SheetRow(isSelected: selectSort == 1 , title: "Newest") {
+                    selectSort = 1
+                }
+                
+                SheetRow(isSelected: selectSort == 2 , title: "Customer review") {
+                    selectSort = 2
+                }
+                
+                
+                SheetRow(isSelected: selectSort == 3 , title: "Price: lowest to high") {
+                    selectSort = 3
+                }
+                
+                
+                SheetRow(isSelected: selectSort == 4 , title: "Price: highest to low") {
+                    selectSort = 5
+                }
+                
+                
+
+                
+            }
+            .presentationDetents([.medium, .large])
+            .presentationContentInteraction(.scrolls)
+            .presentationCornerRadius(25)
+            
+        })
         .navHide
         .background( Color.bg )
     }
