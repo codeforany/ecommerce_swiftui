@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CB241C062DF95137006039CD /* ExyteGrid in Frameworks */ = {isa = PBXBuildFile; productRef = CB241C052DF95137006039CD /* ExyteGrid */; };
+		CBB01FE42E0BA36F0038E5E7 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = CBB01FE32E0BA36F0038E5E7 /* Sliders */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB241C062DF95137006039CD /* ExyteGrid in Frameworks */,
+				CBB01FE42E0BA36F0038E5E7 /* Sliders in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +86,7 @@
 			name = ecommerce;
 			packageProductDependencies = (
 				CB241C052DF95137006039CD /* ExyteGrid */,
+				CBB01FE32E0BA36F0038E5E7 /* Sliders */,
 			);
 			productName = ecommerce;
 			productReference = CBFB30E42DDEDC65004ABF12 /* ecommerce.app */;
@@ -115,6 +118,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CB241C042DF95137006039CD /* XCRemoteSwiftPackageReference "Grid" */,
+				CBB01FE22E0BA36F0038E5E7 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CBFB30E52DDEDC65004ABF12 /* Products */;
@@ -354,6 +358,14 @@
 				minimumVersion = 1.5.0;
 			};
 		};
+		CBB01FE22E0BA36F0038E5E7 /* XCRemoteSwiftPackageReference "swiftui-sliders" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spacenation/swiftui-sliders";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -361,6 +373,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB241C042DF95137006039CD /* XCRemoteSwiftPackageReference "Grid" */;
 			productName = ExyteGrid;
+		};
+		CBB01FE32E0BA36F0038E5E7 /* Sliders */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBB01FE22E0BA36F0038E5E7 /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
+			productName = Sliders;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

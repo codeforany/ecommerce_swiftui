@@ -26,6 +26,7 @@ struct CatProductListScreen: View {
     
     @State var isGrid = true
     @State var isShowSort = false
+    @State var showFilter = false
     
     @State var column = [
             
@@ -115,7 +116,7 @@ struct CatProductListScreen: View {
                     HStack {
                             
                         Button {
-                           
+                            showFilter.toggle()
                         } label: {
                             Image(systemName:  "line.3.horizontal.decrease")
                                 .resizable()
@@ -292,6 +293,7 @@ struct CatProductListScreen: View {
             .presentationCornerRadius(25)
             
         })
+        .bgNavLink(content: FilterScreen() , isActive: $showFilter)
         .navHide
         .background( Color.bg )
     }
