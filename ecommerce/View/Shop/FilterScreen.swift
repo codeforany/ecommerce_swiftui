@@ -34,6 +34,18 @@ struct FilterScreen: View {
         
     ]
     
+    @State var categoryArr = [
+        "All","Women", "Men", "Boys", "Girls"
+    ]
+    
+    @State var selectCategory: [String] = []
+    
+    @State var column = [
+        GridItem(.flexible(minimum: 100), spacing: 15),
+        GridItem(.flexible(minimum: 100), spacing: 15),
+        GridItem(.flexible(minimum: 100), spacing: 15),
+    ]
+    
     var body: some View {
         ZStack {
             
@@ -228,8 +240,110 @@ struct FilterScreen: View {
                         .background( Color.white )
                         .background( Rectangle().fill(Color.white).shadow(color: .black.opacity(0.2) ,radius: 1, y: 1) )
                         
+                        Text("Category")
+                            .s18
+                            .foregroundStyle(Color.primaryText)
+                            .maxLeft
+                            .h15
+                            .v15
+                        
+                        ScrollView( .horizontal, showsIndicators: false) {
+                            
+                            LazyVGrid(columns: column, spacing: 15) {
+                                
+                                
+                                ForEach( 0..<categoryArr.count, id: \.self ) {
+                                    index in
+                                    
+                                    let isSelect = selectCategory.contains { cObj in
+                                        return cObj == categoryArr[index]
+                                    }
+                                    
+                                    Button {
+                                        
+                                        if isSelect  {
+                                            selectCategory.removeAll { cObj in
+                                                return cObj == categoryArr[index]
+                                            }
+                                        }else{
+                                            selectCategory.append(categoryArr[index])
+                                        }
+                                            
+                                    } label: {
+                                        
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(  isSelect ?  Color.primaryApp : Color.white  )
+                                                
+                                                .stroke( isSelect ? Color.primaryApp : Color.primaryText, lineWidth: 1  )
+                                                .frame(width: .infinity, height: 45)
+                                            
+                                            
+                                            Text(categoryArr[index])
+                                                .s16
+                                                .foregroundStyle(isSelect ?   Color.white : Color.primaryText)
+                                        }
+                                        .frame(width: .infinity, height: 45)
+                                        
+                                        
+                                        
+                                    }
+                                }
+                                
+                            }
+                            .padding(15)
+                            .h15
+                            
+                        }
+                        .background( Color.white )
+                        .background( Rectangle().fill(Color.white).shadow(color: .black.opacity(0.2) ,radius: 1, y: 1) )
+                        
+                        
+                        Button {
+                            
+                        } label: {
+                            
+                            HStack{
+                                VStack{
+                                    Text("Brand")
+                                        .s18
+                                        .foregroundStyle(Color.primaryText)
+                                        .maxLeft
+                                    
+                                    Text("adidas Originals, Jack & Jones, s.Oliver")
+                                        .r11
+                                        .foregroundStyle(Color.placeholder)
+                                        .maxLeft
+                                        
+                                }
+                                
+                                Image(systemName: "chevron.right")
+                            }
+                            
+                        }
+                        .h15
+                        .v15
+                        .v15
                     }
                 }
+                
+                
+                HStack{
+                    
+                    RoundButton(title: "Discard", type:.line) {
+                        
+                    }
+                    
+                    
+                    RoundButton(title: "Apply") {
+                        
+                    }
+                    
+                    
+                }.h15
+                .v15
+                .padding(.bottom, .bottomInsets + 15)
+                .background( Rectangle().fill(Color.white).shadow(color: .black.opacity(0.2) ,radius: 1, y: -1) )
                 
             }
             

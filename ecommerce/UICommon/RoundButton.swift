@@ -7,9 +7,15 @@
 
 import SwiftUI
 
+enum RoundButtonStyle {
+    case `color`
+    case `line`
+}
+
 struct RoundButton: View {
     
     @State var title: String = ""
+    @State var type: RoundButtonStyle = .color
     var onPressed: (()->())?
     
     var body: some View {
@@ -18,18 +24,21 @@ struct RoundButton: View {
             
             Text(title)
                 .m14
-                .foregroundColor(.white)
+                .foregroundColor( type == .line ? Color.primaryText : .white)
                 .maxConter
             
         }
         .padding()
         .frame(height: 48)
-        .background(Color.primaryApp)
+        .background( type == .color ? Color.primaryApp : Color.white )
         .cornerRadius(25)
         .onTapGesture {
             onPressed?()
         }
-        .shadow(color: .primaryApp.opacity(0.3), radius: 2,y: 2)
+        .background( RoundedRectangle(cornerRadius: 25)
+            .fill( Color.clear  )
+            .stroke( type == .line ? Color.primaryText : Color.clear, lineWidth: 1  ) )
+        .shadow(color: type == .color ? .primaryApp.opacity(0.3) : .clear, radius: 2,y: 2)
     }
 }
 
