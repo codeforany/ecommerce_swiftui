@@ -46,6 +46,8 @@ struct FilterScreen: View {
         GridItem(.flexible(minimum: 100), spacing: 15),
     ]
     
+    @State var showBrand = false
+    
     var body: some View {
         ZStack {
             
@@ -300,7 +302,7 @@ struct FilterScreen: View {
                         
                         
                         Button {
-                            
+                            showBrand.toggle()
                         } label: {
                             
                             HStack{
@@ -349,6 +351,7 @@ struct FilterScreen: View {
             
             
         }
+        .bgNavLink(content: MultipleSelectionScreen() , isActive: $showBrand)
         .navHide
         .background( Color.bg )
     }

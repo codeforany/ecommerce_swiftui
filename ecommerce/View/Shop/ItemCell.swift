@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemCell: View {
     @State var isOffer: Bool = false
+    var onPress: (() -> ())?
     
     var body: some View {
         
@@ -94,6 +95,9 @@ struct ItemCell: View {
             .padding(.top, 200)
 
             
+        }
+        .onTapGesture {
+            onPress?()
         }
         
     }

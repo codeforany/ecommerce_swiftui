@@ -26,12 +26,30 @@ struct CatProductListScreen: View {
     
     @State var isGrid = true
     @State var isShowSort = false
+    @State var isShowSize = false
     @State var showFilter = false
+    
+    @State var selectSize: Int = -1
     
     @State var column = [
             
         GridItem(.flexible(minimum: 150), spacing: 15),
         GridItem(.flexible(minimum: 150), spacing: 15)
+        
+    ]
+    
+    @State var columnSize = [
+        GridItem(.flexible(minimum: 100), spacing: 15),
+        GridItem(.flexible(minimum: 100), spacing: 15),
+        GridItem(.flexible(minimum: 100), spacing: 15),
+    ]
+    
+    @State var sizeArr = [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
         
     ]
     
@@ -169,7 +187,9 @@ struct CatProductListScreen: View {
                     if isGrid {
                         LazyVGrid(columns: column, spacing: 20) {
                             ForEach(0..<10, id:\.self) { i in
-                                ItemCell(isOffer: false)
+                                ItemCell(isOffer: false,  onPress: {
+                                    isShowSize.toggle()
+                                })
                                     .clipped()
                                 
                             }
@@ -236,18 +256,13 @@ struct CatProductListScreen: View {
                                 .cornerRadius(10)
                                 .shadow( color: Color.black.opacity(0.1) , radius: 2, y:1)
                                 .h15
-                                
-                                
-
+                                .onTapGesture {
+                                    isShowSize.toggle()
+                                }
                             }
                         }
                         .t15
                     }
-                    
-                    
-                    
-                    
-                    
                 }
             }
             
@@ -283,11 +298,85 @@ struct CatProductListScreen: View {
                 SheetRow(isSelected: selectSort == 4 , title: "Price: highest to low") {
                     selectSort = 5
                 }
-                
-                
-
-                
             }
+            .presentationDetents([.medium, .large])
+            .presentationContentInteraction(.scrolls)
+            .presentationCornerRadius(25)
+            
+        })
+        
+        .sheet(isPresented: $isShowSize, content: {
+            
+            LazyVStack(spacing: 15) {
+                
+                Text("Select Size")
+                    .b34
+                    .foregroundStyle(Color.primaryText)
+                    .maxConter
+                
+                LazyVGrid(columns: columnSize, spacing: 15) {
+                    
+                    
+                    ForEach( 0..<sizeArr.count, id: \.self ) {
+                        index in
+                        
+                        
+                        
+                        Button {
+                            
+                            selectSize = index
+                                
+                        } label: {
+                            
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(  selectSize == index ?  Color.primaryApp : Color.white  )
+                                    
+                                    .stroke( selectSize == index ? Color.primaryApp : Color.primaryText, lineWidth: 1  )
+                                    .frame( height: 45)
+                                
+                                
+                                Text(sizeArr[index])
+                                    .s16
+                                    .foregroundStyle(selectSize == index ?   Color.white : Color.primaryText)
+                            }
+                            .frame( height: 45)
+                            
+                        }
+                    }
+                    
+                }
+                .v15
+                
+                Divider()
+                
+                Button {
+                    
+                } label: {
+                    HStack{
+                        Text("Size Info")
+                            .r16
+                            .maxLeft
+                        
+                        Image(systemName: "chevron.right")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 15, height: 15)
+                            
+                    }
+                    
+                }
+                .foregroundStyle(Color.primaryText)
+                .frame(height: 30)
+                
+                Divider()
+                
+                
+                RoundButton(title: "ADD TO CART") {
+                    isShowSize = false
+                }
+            }
+            .h20
             .presentationDetents([.medium, .large])
             .presentationContentInteraction(.scrolls)
             .presentationCornerRadius(25)
