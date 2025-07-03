@@ -27,6 +27,7 @@ struct CatProductListScreen: View {
     @State var isGrid = true
     @State var isShowSort = false
     @State var isShowSize = false
+    @State var showDetail = false
     @State var showFilter = false
     
     @State var selectSize: Int = -1
@@ -188,7 +189,8 @@ struct CatProductListScreen: View {
                         LazyVGrid(columns: column, spacing: 20) {
                             ForEach(0..<10, id:\.self) { i in
                                 ItemCell(isOffer: false,  onPress: {
-                                    isShowSize.toggle()
+                                    showDetail.toggle()
+//                                    isShowSize.toggle()
                                 })
                                     .clipped()
                                 
@@ -257,7 +259,8 @@ struct CatProductListScreen: View {
                                 .shadow( color: Color.black.opacity(0.1) , radius: 2, y:1)
                                 .h15
                                 .onTapGesture {
-                                    isShowSize.toggle()
+//                                    isShowSize.toggle()
+                                    showDetail.toggle()
                                 }
                             }
                         }
@@ -383,6 +386,7 @@ struct CatProductListScreen: View {
             
         })
         .bgNavLink(content: FilterScreen() , isActive: $showFilter)
+        .bgNavLink(content: ProductDetailScreen() , isActive: $showDetail)
         .navHide
         .background( Color.bg )
     }
