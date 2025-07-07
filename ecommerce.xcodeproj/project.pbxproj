@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CB241C062DF95137006039CD /* ExyteGrid in Frameworks */ = {isa = PBXBuildFile; productRef = CB241C052DF95137006039CD /* ExyteGrid */; };
 		CBB01FE42E0BA36F0038E5E7 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = CBB01FE32E0BA36F0038E5E7 /* Sliders */; };
+		CBCF9EA32E1B85250059FA14 /* ACarousel in Frameworks */ = {isa = PBXBuildFile; productRef = CBCF9EA22E1B85250059FA14 /* ACarousel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB241C062DF95137006039CD /* ExyteGrid in Frameworks */,
+				CBCF9EA32E1B85250059FA14 /* ACarousel in Frameworks */,
 				CBB01FE42E0BA36F0038E5E7 /* Sliders in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +89,7 @@
 			packageProductDependencies = (
 				CB241C052DF95137006039CD /* ExyteGrid */,
 				CBB01FE32E0BA36F0038E5E7 /* Sliders */,
+				CBCF9EA22E1B85250059FA14 /* ACarousel */,
 			);
 			productName = ecommerce;
 			productReference = CBFB30E42DDEDC65004ABF12 /* ecommerce.app */;
@@ -119,6 +122,7 @@
 			packageReferences = (
 				CB241C042DF95137006039CD /* XCRemoteSwiftPackageReference "Grid" */,
 				CBB01FE22E0BA36F0038E5E7 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
+				CBCF9EA12E1B85250059FA14 /* XCRemoteSwiftPackageReference "ACarousel" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CBFB30E52DDEDC65004ABF12 /* Products */;
@@ -366,6 +370,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		CBCF9EA12E1B85250059FA14 /* XCRemoteSwiftPackageReference "ACarousel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JWAutumn/ACarousel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -378,6 +390,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CBB01FE22E0BA36F0038E5E7 /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
 			productName = Sliders;
+		};
+		CBCF9EA22E1B85250059FA14 /* ACarousel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBCF9EA12E1B85250059FA14 /* XCRemoteSwiftPackageReference "ACarousel" */;
+			productName = ACarousel;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

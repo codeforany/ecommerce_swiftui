@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
+import ACarousel
+
+struct Item: Identifiable {
+    let id = UUID()
+    let image: Image
+}
 
 struct ProductDetailScreen: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @State var imageArray = ["1","2","3"]
     
     var body: some View {
         ZStack {
@@ -55,10 +62,22 @@ struct ProductDetailScreen: View {
                     VStack(spacing: 0){
                         
                         
-                        VStack {
-                            
-                        }
-                        .frame(height: 300)
+                        ACarousel( imageArray.map({ image in
+                            return Item(image: Image(image))
+                        }),
+                                          spacing: 10,
+                                          headspace: 10,
+                                          sidesScaling: 0.95,
+                                          isWrap: true
+                                          ) { item in
+                            item.image
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(height: 400)
+                                        .clipped()
+                                }
+                                .frame(height: 400)
+                                .v8
                         
                         
                         VStack{
@@ -163,6 +182,43 @@ struct ProductDetailScreen: View {
                         .h20
                         .v15
                         Divider()
+                        
+                        
+                        HStack{
+                            Text("You can also like this")
+                                .s18
+                                .foregroundStyle( Color.primaryText)
+                                .maxLeft
+                            
+                            
+                            Button {
+                                
+                            } label: {
+                                Text("12 items")
+                                    .m14
+                                    .foregroundStyle( Color.placeholder)
+                            }
+
+                        }
+                        .h20
+                        .v8
+                        .t15
+                        
+                        ScrollView(.horizontal) {
+                            LazyHStack(spacing: 20) {
+                                
+                                ForEach(0..<6) { index in
+                                    ItemRow()
+                                }
+                                
+                            }
+                            .h20
+                            
+                            
+                            
+                            
+                        }
+                        .b8
                         
                         
                     }
