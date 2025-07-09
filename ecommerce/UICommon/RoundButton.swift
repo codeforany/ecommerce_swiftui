@@ -15,6 +15,7 @@ enum RoundButtonStyle {
 struct RoundButton: View {
     
     @State var title: String = ""
+    @State var icon: String = ""
     @State var type: RoundButtonStyle = .color
     var onPressed: (()->())?
     
@@ -22,12 +23,23 @@ struct RoundButton: View {
          
         HStack {
             
-            Text(title)
-                .m14
-                .foregroundColor( type == .line ? Color.primaryText : .white)
-                .maxConter
+            
+            HStack{
+                if icon != "" {
+                    Image(systemName: icon)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 18)
+                }
+                Text(title)
+                    .m14
+                    
+            }
+            .foregroundColor( type == .line ? Color.primaryText : .white)
+            .maxConter
             
         }
+        
         .padding()
         .frame(height: 48)
         .background( type == .color ? Color.primaryApp : Color.white )
