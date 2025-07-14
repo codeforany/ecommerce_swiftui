@@ -80,6 +80,14 @@ struct RatingReviewScreen: View {
                     }
                     .v15
                     
+                    
+                    LazyVStack(spacing: 8) {
+                        
+                        ForEach(0..<10, id:\.self) { index in
+                            UserReviewRow()
+                        }
+                    }
+                    
                 }
                 .h20
                 .padding(.top, .topInsets + 54)

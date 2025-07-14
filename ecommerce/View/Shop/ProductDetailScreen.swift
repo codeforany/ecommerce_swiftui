@@ -16,6 +16,7 @@ struct Item: Identifiable {
 struct ProductDetailScreen: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var imageArray = ["1","2","3"]
+    @State var showRatingReviews = false
     
     var body: some View {
         ZStack {
@@ -113,6 +114,9 @@ struct ProductDetailScreen: View {
                                     .r14
                                     .foregroundStyle(Color.placeholder)
                                 
+                            }
+                            .onTapGesture {
+                                showRatingReviews = true
                             }
                             .maxLeft
                             
@@ -238,11 +242,17 @@ struct ProductDetailScreen: View {
             
             
         }
+        .bgNavLink(content: RatingReviewScreen() , isActive: $showRatingReviews)
         .navHide
         .background( Color.bg )
     }
 }
 
 #Preview {
-    ProductDetailScreen()
+    
+    NavigationView {
+        ProductDetailScreen()
+    }
+    
+    
 }
