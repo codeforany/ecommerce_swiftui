@@ -10,7 +10,7 @@ import SwiftUI
 struct RatingReviewScreen: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var isWithPhoto: Bool = false
-    
+    @State var showWriteReview: Bool = false
     var body: some View {
         ZStack{
             
@@ -135,7 +135,7 @@ struct RatingReviewScreen: View {
                 HStack{
                     Spacer()
                     RoundButton(title: "Write a Review", icon: "pencil") {
-                        
+                        showWriteReview = true
                     }
                     .frame(width: 170)
                     .h20
@@ -146,6 +146,17 @@ struct RatingReviewScreen: View {
             }
             
         }
+        .sheet(isPresented: $showWriteReview, content: {
+            
+            
+            
+            WriteAReviewScreen()
+            
+            .presentationDetents([.large])
+            .presentationContentInteraction(.scrolls)
+            .presentationCornerRadius(25)
+            
+        })
         .background( Color.bg )
         .navHide
     }
