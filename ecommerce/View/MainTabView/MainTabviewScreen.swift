@@ -19,9 +19,7 @@ struct MainTabviewScreen: View {
             }else if( selectTab == 1 ) {
                 ShopTabScreen()
             }else if( selectTab == 2 ) {
-                VStack {
-                    Text("Bag")
-                }
+                BagTabScreen()
             }else if( selectTab == 3 ) {
                 VStack {
                     Text("Fav")
