@@ -72,7 +72,7 @@ struct LoginScreen: View {
             
             Text("Or login with social account")
                 .r14
-                .maxConter
+                .maxCenter
                 .padding( .top, 30)
             
             HStack(spacing: 15){

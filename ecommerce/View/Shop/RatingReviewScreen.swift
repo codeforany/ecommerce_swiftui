@@ -114,7 +114,7 @@ struct RatingReviewScreen: View {
                     Text("")
                         .s18
                         .foregroundStyle(Color.primaryText)
-                        .maxConter
+                        .maxCenter
                         
                     
                     VStack{

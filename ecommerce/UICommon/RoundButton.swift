@@ -16,6 +16,7 @@ struct RoundButton: View {
     
     @State var title: String = ""
     @State var icon: String = ""
+    @State var height: CGFloat = 48.0
     @State var type: RoundButtonStyle = .color
     var onPressed: (()->())?
     
@@ -36,12 +37,12 @@ struct RoundButton: View {
                     
             }
             .foregroundColor( type == .line ? Color.primaryText : .white)
-            .maxConter
+            .maxCenter
             
         }
         
         .padding()
-        .frame(height: 48)
+        .frame(height: height)
         .background( type == .color ? Color.primaryApp : Color.white )
         .cornerRadius(25)
         .onTapGesture {

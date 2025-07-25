@@ -62,7 +62,7 @@ struct SignUpScreen: View {
             
             Text("Or sign up with social account")
                 .r14
-                .maxConter
+                .maxCenter
                 .padding( .top, 30)
             
             HStack(spacing: 15){

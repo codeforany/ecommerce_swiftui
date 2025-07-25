@@ -70,7 +70,7 @@ struct WomenCategoriesTabScreen: View {
                             
                         }
                         .foregroundStyle(Color.whiteText)
-                        .maxConter
+                        .maxCenter
                         .frame(height: 100)
                         .background( Color.primaryApp )
                         .cornerRadius(10)
@@ -102,7 +102,7 @@ struct WomenCategoriesTabScreen: View {
                             
                         }
                         .foregroundStyle(Color.primaryText)
-                        .maxConter
+                        .maxCenter
                         .frame(height: 100)
                         .background( Color.white )
                         .cornerRadius(10)

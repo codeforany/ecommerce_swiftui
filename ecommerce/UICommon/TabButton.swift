@@ -29,7 +29,7 @@ struct TabButton: View {
                 Text(title)
                     .r11
                     
-                    .maxConter
+                    .maxCenter
             }
             
         }

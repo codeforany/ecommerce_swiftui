@@ -38,7 +38,7 @@ struct ProductDetailScreen: View {
                     Text("Short Dress")
                         .s18
                         .foregroundStyle(Color.primaryText)
-                        .maxConter
+                        .maxCenter
                         
                     
                     Button {

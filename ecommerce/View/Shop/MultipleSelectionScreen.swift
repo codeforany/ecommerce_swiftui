@@ -45,7 +45,7 @@ struct MultipleSelectionScreen: View {
                     Text("Brand")
                         .s18
                         .foregroundStyle(Color.primaryText)
-                        .maxConter
+                        .maxCenter
                     
                     
                     VStack{

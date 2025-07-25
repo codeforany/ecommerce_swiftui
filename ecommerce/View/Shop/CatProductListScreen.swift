@@ -112,7 +112,7 @@ struct CatProductListScreen: View {
                                     Text(obj["name"] as? String ?? "" )
                                         .m14
                                         .foregroundStyle(Color.white)
-                                        .maxConter
+                                        .maxCenter
                                 }
                                 .foregroundStyle(Color.white)
                                 .frame(width: 120, height: 35, alignment: .center)
@@ -160,7 +160,7 @@ struct CatProductListScreen: View {
                                 .r11
                                 .foregroundStyle(Color.primaryText)
                         }
-                        .maxConter
+                        .maxCenter
                         
                         Button {
                             isGrid = !isGrid
@@ -277,7 +277,7 @@ struct CatProductListScreen: View {
                 Text("Sort By")
                     .b34
                     .foregroundStyle(Color.primaryText)
-                    .maxConter
+                    .maxCenter
                     .b15
                 
                 SheetRow(isSelected: selectSort == 0 , title: "Popular") {
@@ -315,7 +315,7 @@ struct CatProductListScreen: View {
                 Text("Select Size")
                     .b34
                     .foregroundStyle(Color.primaryText)
-                    .maxConter
+                    .maxCenter
                 
                 LazyVGrid(columns: columnSize, spacing: 15) {
                     

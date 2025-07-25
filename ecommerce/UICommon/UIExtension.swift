@@ -142,7 +142,7 @@ extension View {
         self.frame(maxWidth: .infinity, alignment: .trailing)
     }
     
-    var maxConter: some View {
+    var maxCenter: some View {
         self.frame(maxWidth: .infinity, alignment: .center)
     }
     

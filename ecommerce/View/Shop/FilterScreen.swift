@@ -68,7 +68,7 @@ struct FilterScreen: View {
                     Text("Filters")
                         .s18
                         .foregroundStyle(Color.primaryText)
-                        .maxConter
+                        .maxCenter
                         
                     
                     VStack{

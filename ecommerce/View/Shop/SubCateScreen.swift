@@ -51,7 +51,7 @@ struct SubCateScreen: View {
                         
                         Text("Categories")
                             .s18
-                            .maxConter
+                            .maxCenter
                         
                         Button {
                             
