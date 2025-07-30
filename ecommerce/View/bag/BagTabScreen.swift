@@ -11,6 +11,7 @@ struct BagTabScreen: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var txtPromoCode: String = ""
     @State var isShowPromoCode = false
+    @State var isCheckout = false
     var body: some View {
         ZStack {
             
@@ -193,7 +194,7 @@ struct BagTabScreen: View {
                     }
                     
                     RoundButton(title: "CHECK OUT") {
-                        
+                        isCheckout = true
                     }
                 }
                 
@@ -313,6 +314,7 @@ struct BagTabScreen: View {
             .presentationCornerRadius(25)
             
         })
+        .bgNavLink(content: CheckoutScreen()  , isActive: $isCheckout)
         .navHide
         .background( Color.bg )
     }
