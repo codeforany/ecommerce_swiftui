@@ -26,9 +26,7 @@ struct MainTabviewScreen: View {
                 }
             }else {
                 
-                    VStack {
-                        Text("Profile")
-                    }
+                    ProfileTabScreen()
                 
             }
             
