@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ProfileTabScreen: View {
+    
+    @State var showMyOrders: Bool = false
+    
     var body: some View {
         ZStack{
             VStack{
@@ -64,7 +67,9 @@ struct ProfileTabScreen: View {
                         .v15
                         
                         
-                        ProfileRow(title: "My orders", subtitle: "Already have 12 orders")
+                        ProfileRow(title: "My orders", subtitle: "Already have 12 orders") {
+                            showMyOrders = true
+                        }
                         
                         ProfileRow(title: "Shipping addresses", subtitle: "3 ddresses")
                         
@@ -81,6 +86,7 @@ struct ProfileTabScreen: View {
                 }
             }
         }
+        .bgNavLink(content: MyOrdersScreen(), isActive: $showMyOrders)
         .navHide
     }
     
@@ -88,5 +94,10 @@ struct ProfileTabScreen: View {
 }
 
 #Preview {
-    ProfileTabScreen()
+    
+    NavigationView {
+        ProfileTabScreen()
+    }
+    
+    
 }
