@@ -11,6 +11,7 @@ struct MyOrdersScreen: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var selectTab: Int = 0
+    @State var showDetails: Bool = false
     
     var body: some View {
         ZStack{
@@ -99,12 +100,16 @@ struct MyOrdersScreen: View {
                     LazyVStack(spacing: 20){
                         ForEach(0..<5, id:\.self) { index in
                             MyOrderRow()
+                                .onTapGesture {
+                                    showDetails = true
+                                }
                         }
                     }
                     .padding(20)
                 }
             }
         }
+        .bgNavLink(content: OrderDetailsScreen(), isActive: $showDetails)
         .navHide
     }
 }
