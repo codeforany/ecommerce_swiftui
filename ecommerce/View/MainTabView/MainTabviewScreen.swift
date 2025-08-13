@@ -21,12 +21,10 @@ struct MainTabviewScreen: View {
             }else if( selectTab == 2 ) {
                 BagTabScreen()
             }else if( selectTab == 3 ) {
-                VStack {
-                    Text("Fav")
-                }
+                FavoritesTabScreen()
             }else {
                 
-                    ProfileTabScreen()
+                ProfileTabScreen()
                 
             }
             
