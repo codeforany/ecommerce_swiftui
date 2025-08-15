@@ -11,7 +11,7 @@ struct SettingsScreen: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    
+    @State var showPassword: Bool = false
     @State var txtName: String = ""
     @State var nameError: String = ""
     @State var nameErrorShow: Bool = false
@@ -86,7 +86,7 @@ struct SettingsScreen: View {
                                 .maxLeft
                             
                             Button {
-                                
+                                showPassword = true
                             } label: {
                                 Text("Change")
                                     .s18
@@ -150,10 +150,16 @@ struct SettingsScreen: View {
             }
             
         }
+        .bgNavLink(content: ChangePasswordScreen(), isActive: $showPassword)
         .navHide
     }
 }
 
 #Preview {
-    SettingsScreen()
+    
+    NavigationView {
+        SettingsScreen()
+    }
+    
+    
 }

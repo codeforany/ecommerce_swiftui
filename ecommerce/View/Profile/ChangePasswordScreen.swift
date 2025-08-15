@@ -1,23 +1,28 @@
 //
-//  LoginScreen.swift
+//  ChangePasswordScreen.swift
 //  ecommerce
 //
-//  Created by CodeForAny on 29/05/25.
+//  Created by CodeForAny on 15/08/25.
 //
 
 import SwiftUI
 
-struct LoginScreen: View {
-        
+struct ChangePasswordScreen: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @State var showForgot: Bool = false
-    @State var txtEmail: String = ""
-    @State var emailError: String = "please enter valid email"
-    @State var emailErrorShow: Bool = false
+   
+    @State var showForgot = false
+    
+    @State var txtCurrentPassword: String = ""
+    @State var currentPasswordError: String = ""
+    @State var currentPasswordErrorShow: Bool = false
     
     @State var txtPassword: String = ""
     @State var passwordError: String = ""
     @State var passwordErrorShow: Bool = false
+    
+    @State var txtConfirmPassword: String = ""
+    @State var confirmPasswordError: String = ""
+    @State var confirmPasswordErrorShow: Bool = false
     
     var body: some View {
         VStack(spacing: 15) {
@@ -35,7 +40,7 @@ struct LoginScreen: View {
 
             }
             
-            Text("Login")
+            Text("Password Change")
                 .b34
                 .maxLeft
                 .padding( .top, 30)
@@ -44,9 +49,7 @@ struct LoginScreen: View {
                 .frame(height: .widthPer(per: 0.07))
             
                         
-            RoundTextField(txt: $txtEmail, placeholder: "Email", errorMessage: $emailError, isError: $emailErrorShow)
-            
-            RoundTextField(txt: $txtPassword, placeholder: "Password", errorMessage: $passwordError, isError: $passwordErrorShow)
+            RoundTextField(txt: $txtCurrentPassword, placeholder: "Current Password", errorMessage: $currentPasswordError, isError: $currentPasswordErrorShow)
             
             HStack{
                 
@@ -57,37 +60,26 @@ struct LoginScreen: View {
                         .r14
                         .foregroundStyle( Color.primaryText)
                         
-                    Image(systemName: "arrow.right")
-                        .foregroundStyle( Color.primaryApp)
+                    
                 }
                 .maxRight
 
                 
             }
+            .b8
             
-            RoundButton(title: "LOGIN")
+            RoundTextField(txt: $txtPassword, placeholder: "New Password", errorMessage: $passwordError, isError: $passwordErrorShow)
+            
+            
+            RoundTextField(txt: $txtConfirmPassword, placeholder: "Repeat New Password", errorMessage: $confirmPasswordError, isError: $confirmPasswordErrorShow)
+            
+            
+            
+            RoundButton(title: "SAVE PASSWORD")
                 .t15
             
             Spacer()
             
-            Text("Or login with social account")
-                .r14
-                .maxCenter
-                .padding( .top, 30)
-            
-            HStack(spacing: 15){
-                Spacer()
-                
-                RoundIconButton(icon: "fb") {
-                    
-                }
-                
-                RoundIconButton(icon: "google") {
-                    
-                }
-                
-                Spacer()
-            }
             
         }
         .bgNavLink(content: ForgotPasswordScreen(), isActive: $showForgot)
@@ -98,10 +90,8 @@ struct LoginScreen: View {
 }
 
 #Preview {
-    
     NavigationView {
-        LoginScreen()
+        ChangePasswordScreen()
     }
-    
     
 }
