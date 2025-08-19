@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CheckoutScreen: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
+    @State var showSuccess: Bool = false
     var body: some View {
         ZStack {
             
@@ -220,7 +220,7 @@ struct CheckoutScreen: View {
                     
                     
                     RoundButton(title: "SUBMIT ORDER"){
-                        
+                        showSuccess = true
                     }
                     .h20
                     
@@ -230,10 +230,15 @@ struct CheckoutScreen: View {
             }
             
         }
+        .bgNavLink(content: SuccessScreen1(), isActive: $showSuccess)
         .navHide
     }
 }
 
 #Preview {
-    CheckoutScreen()
+    
+    NavigationView {
+        CheckoutScreen()
+    }
+    
 }
