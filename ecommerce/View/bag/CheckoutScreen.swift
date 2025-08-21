@@ -55,12 +55,8 @@ struct CheckoutScreen: View {
                             .s18
                             .maxLeft
                             .v8
-                        
-                        
                         VStack(spacing: 10){
                             HStack{
-                                
-                                
                                 Text("Jane Doe")
                                     .m14
                                     .maxLeft
@@ -72,9 +68,6 @@ struct CheckoutScreen: View {
                                         .m14
                                 }
                                 .foregroundStyle(Color.primaryApp)
-                                
-                                
-                                
                             }
                             
                             Text("3 Newbridge Court\nChino Hills, CA 91709, United States")
@@ -85,8 +78,6 @@ struct CheckoutScreen: View {
                         .background( RoundedRectangle(cornerRadius: 10).fill(Color.white).shadow(color: .black.opacity(0.2) ,radius: 1, y: 1) )
                         
                         HStack{
-                            
-                            
                             Text("Payment")
                                 .m14
                                 .maxLeft
@@ -98,9 +89,6 @@ struct CheckoutScreen: View {
                                     .m14
                             }
                             .foregroundStyle(Color.primaryApp)
-                            
-                            
-                            
                         }
                         .t15
                         
